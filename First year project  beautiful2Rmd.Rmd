@@ -91,9 +91,9 @@ ggplot(data.for.plot, aes(Pairs, 1/(Time),col = Type)) + geom_point() + ggtitle(
 lm.log <- lm(formula = log(Time) ~ Pairs + Size + Status + Pairs*Size + Pairs*Status + Size*Status + Pairs*Size*Status, data)
 lm.sqrt<- lm(formula = sqrt(Time) ~ Pairs + Size + Status + Pairs*Size + Pairs*Status + Size*Status + Pairs*Size*Status, data)
 lm.inv <- lm(formula = 1/(Time) ~ Pairs + Size + Status + Pairs*Size + Pairs*Status + Size*Status + Pairs*Size*Status, data)
-summary(lm.log)
-summary(lm.sqrt)
-summary(lm.inv)
+summary(lm.log)$adj.r.squared
+summary(lm.sqrt)$adj.r.squared
+summary(lm.inv)$adj.r.squared
 
 ```
 
@@ -122,13 +122,13 @@ ggplot(final_data.inv) + geom_point(aes(1/Time, standard_res.inv)) + geom_abline
 # QQ-plot for transformed models
 ```{r}
 # log qqplot
-ggplot(data, aes(sample = log(Time))) + stat_qq() + stat_qq_line() + ylab("Sample Quantiles") + xlab("Theoretical Quantiles") + ggtitle("QQ-plot for log transformed data") + theme(plot.title = element_text(hjust = 0.5)) 
+ggplot(data, aes(sample = log(Time))) + stat_qq() + stat_qq_line() + ylab("Sample Quantiles") + xlab("Theoretical Quantiles") + ggtitle("QQ-plot for log transformed data") + theme(plot.title = element_text(hjust = 0.5)) + ylim(-1.5, 8)
 
 # sqrt qqplot
-ggplot(data, aes(sample = sqrt(Time))) + stat_qq() + stat_qq_line() + ylab("Sample Quantiles") + xlab("Theoretical Quantiles") + ggtitle("QQ-plot for sqrt transformed data") + theme(plot.title = element_text(hjust = 0.5)) 
+ggplot(data, aes(sample = sqrt(Time))) + stat_qq() + stat_qq_line() + ylab("Sample Quantiles") + xlab("Theoretical Quantiles") + ggtitle("QQ-plot for sqrt transformed data") + theme(plot.title = element_text(hjust = 0.5)) + ylim(-1.5, 8)
 
 # inverse qqplot
-ggplot(data, aes(sample = 1/(Time))) + ylab("Sample Quantiles") + xlab("Theoretical Quantiles") + ggtitle("QQ-plot for inversely transformed data") + theme(plot.title = element_text(hjust = 0.5)) + stat_qq() + stat_qq_line()
+ggplot(data, aes(sample = 1/(Time))) + ylab("Sample Quantiles") + xlab("Theoretical Quantiles") + ggtitle("QQ-plot for inversely transformed data") + theme(plot.title = element_text(hjust = 0.5)) + stat_qq() + stat_qq_line() + ylim(-1.5, 8)
 
 
 
