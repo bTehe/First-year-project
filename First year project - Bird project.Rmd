@@ -22,12 +22,17 @@ Plot 4 graphs with LM, LR, SM, SR with slopes and geom_point()
 ```{r}
 
 
+<<<<<<< Updated upstream
 
 lm_full <- lm(formula = Time ~ Pairs + Size + Status + Pairs*Size + Pairs*Status + Size*Status + Pairs*Size*Status, data)
+=======
+lm_full <- lm(formula = Time ~ Pairs + Size + Status + Pairs*Size + Pairs * Status + Size*Status + Pairs*Size*Status, data)
+>>>>>>> Stashed changes
 lm_full.log <- lm(formula = log(Time) ~ Pairs + Size + Status + Pairs*Size + Pairs * Status + Size*Status + Pairs*Size*Status, data)
 lm_full.sqrt <- lm(formula = sqrt(Time) ~ Pairs + Size + Status + Pairs*Size + Pairs * Status + Size*Status + Pairs*Size*Status, data)
 lm_full.inverse <- lm(formula = 1/Time ~ Pairs + Size + Status + Pairs*Size + Pairs * Status + Size*Status + Pairs*Size*Status, data)
 
+<<<<<<< Updated upstream
 summary(lm_full)$adj.r.squared
 summary(lm_full.log)$adj.r.squared
 summary(lm_full.sqrt)$adj.r.squared
@@ -35,6 +40,14 @@ summary(lm_full.inverse)$adj.r.squared
 
 summary(lm_full)
 
+=======
+
+
+summary(lm_full)$r.squared
+summary(lm_full.log)$r.squared
+summary(lm_full.sqrt)$r.squared
+summary(lm_full.inverse)$r.squared
+>>>>>>> Stashed changes
 
 ```
 
@@ -209,6 +222,25 @@ summary(lm_full.inversepair)$r.squared
 ```{r}
 
 ```
+
+```{r}
+
+```
+
+
+# 6 slopes of the four combinations
+
+```{r}
+print(data$Size)
+print(data$Status)
+
+
+#lm_full <- lm(formula = Size, data)
+
+
+```
+
+
 
 
 
